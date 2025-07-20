@@ -1,12 +1,77 @@
-# React + Vite
+# Smart Goal Planner
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A dynamic React app for planning, tracking, and managing your personal goals. Built with Vite for fast development and a modern UI.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Add, edit, and delete smart goals
+- Visual progress tracking for each goal
+- Overview dashboard for all goals
+- Responsive, glassmorphism-inspired UI
+- Fast and easy setup with Vite
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Prerequisites
+
+- Node.js (v16+ recommended)
+- npm or yarn
+
+### Installation
+
+```bash
+git clone https://github.com/your-username/vite-challenge.git
+cd vite-challenge
+npm install
+```
+
+### Running the App
+
+```bash
+npm run dev
+```
+
+Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+### Backend API
+
+This app expects a REST API for goals at `http://localhost:3000/goals`.  
+You can use [json-server](https://github.com/typicode/json-server) for quick prototyping:
+
+```bash
+npm install -g json-server
+json-server --watch db.json --port 3000
+```
+
+Create a `db.json` file with:
+
+```json
+{
+  "goals": []
+}
+```
+
+## Project Structure
+
+```
+src/
+  ├── components/
+  │   ├── GoalForm.jsx
+  │   ├── GoalList.jsx
+  │   └── Overview.jsx
+  ├── App.jsx
+  ├── main.jsx
+  └── index.css
+```
+
+## Customization
+
+- Update styles in `src/index.css` for your own look
+- Extend components for more features (categories, deadlines, etc.)
+
+## License
+This a code challenge done for educational purposes under the instruction of Moringa school.
+
+
+## Author
+Wayne Muongi
