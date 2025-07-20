@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const GoalItem = ({ goal, onDelete, onEdit }) => {
   const { id, name, targetAmount, savedAmount, category, deadline } = goal;
   const progress = Math.min(Math.round((savedAmount / targetAmount) * 100), 100);
+  const remaining = Math.max(targetAmount - savedAmount, 0);
 
   const [isEditing, setIsEditing] = useState(false);
   const [editData, setEditData] = useState({ ...goal });
@@ -19,7 +20,7 @@ const GoalItem = ({ goal, onDelete, onEdit }) => {
   };
 
   return (
-    <div className="goal-card">
+    <div className="goal-item">
       {isEditing ? (
         <form onSubmit={handleEditSubmit} className="edit-form">
           <input name="name" value={editData.name} onChange={handleEditChange} />
@@ -35,10 +36,13 @@ const GoalItem = ({ goal, onDelete, onEdit }) => {
           <h3>{name}</h3>
           <p><strong>Target:</strong> ${targetAmount}</p>
           <p><strong>Saved:</strong> ${savedAmount}</p>
+          <p><strong>Remaining:</strong> ${remaining}</p>
           <p><strong>Category:</strong> {category}</p>
           <p><strong>Deadline:</strong> {deadline}</p>
           <div className="progress-bar">
-            <div className="filled" style={{ width: `${progress}%` }}>{progress}%</div>
+            <div className="progress-bar-inner" style={{ width: `${progress}%` }}>
+              {progress}%
+            </div>
           </div>
           <div className="goal-actions">
             <button onClick={() => setIsEditing(true)}>Edit</button>

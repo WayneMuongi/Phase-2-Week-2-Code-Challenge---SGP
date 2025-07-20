@@ -7,7 +7,7 @@ const GoalList = ({ goals, onDelete, onEdit }) => {
   return (
     <div className="goal-list">
       {goals.map(goal => (
-        <GoalItem key={goal.id} goal={goal} onDelete={onDelete} onEdit={onEdit} />
+        <GoalItem key={goal.id} goal={goal} onEdit={onEdit} onDelete={onDelete} />
       ))}
     </div>
   );

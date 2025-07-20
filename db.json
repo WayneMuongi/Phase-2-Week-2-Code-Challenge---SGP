@@ -89,6 +89,15 @@
       "category": "Home",
       "deadline": "2025-03-31",
       "createdAt": "2024-05-15"
+    },
+    {
+      "id": "1753054178548",
+      "name": "College",
+      "targetAmount": 3000,
+      "savedAmount": 590,
+      "category": "Education",
+      "deadline": "2025-10-08",
+      "createdAt": "2025-07-20"
     }
   ]
 }
