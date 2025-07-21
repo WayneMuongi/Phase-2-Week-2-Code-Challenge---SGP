@@ -24,8 +24,20 @@ const Overview = ({ goals }) => {
         </div>
         <div className="card stat-card">
           <h4>Overall Progress</h4>
-          <div className="progress-bar">
-            <div className="filled" style={{ width: `${progressPercent}%` }}>
+          <div className="progress-bar" style={{ background: '#eee', borderRadius: '8px', overflow: 'hidden', height: '24px' }}>
+            <div
+              className="filled"
+              style={{
+                width: `${progressPercent}%`,
+                background: '#4caf50',
+                color: '#fff',
+                height: '100%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                transition: 'width 0.3s'
+              }}
+            >
               {progressPercent}%
             </div>
           </div>

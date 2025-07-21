@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import GoalForm from "./components/GoalForm";
 import GoalList from "./components/GoalList";
@@ -45,24 +44,23 @@ function App() {
   };
 
   
-  const deleteGoal = (id) => {
-    fetch(`${API_URL}/${id}`, {
-      method: "DELETE",
-    }).then(() => {
-      setGoals((prevGoals) => prevGoals.filter((goal) => goal.id !== id));
-    });
+  const deleteGoal = async (id) => {
+    await fetch(`${API_URL}/${id}`, { method: "DELETE" });
+    setGoals((prevGoals) => prevGoals.filter((goal) => goal.id !== id));
   };
   
 
   return (
 <div className="container">
-  <h1>Smart Goal Planner!!</h1>
+  <h1>Smart Goal Planner!</h1>
   <GoalForm onAddGoal={addGoal} />
   <Overview goals={goals} />
-  <GoalList goals={goals} onUpdate={updateGoal} onDelete={deleteGoal} />
+  <GoalList goals={goals} onDelete={deleteGoal} onEdit={updateGoal} />
 </div>
   );
 }
 
 export default App;
+
+<button onClick={() => onDelete(id)} className="delete-btn">Delete</button>
 

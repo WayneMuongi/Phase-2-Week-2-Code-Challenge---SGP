@@ -7,24 +7,64 @@
 
 body {
   font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
-  background: linear-gradient(135deg, #e0e7ff 0%, #f8fafc 100%);
-  color: #22223b;
   min-height: 100vh;
   padding: 2rem;
+  color: #f8fafc;
+  background: radial-gradient(ellipse at 20% 30%, #3a3a60 0%, #23234a 60%, #0a0a23 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: relative;
+  overflow-x: hidden;
   transition: background 0.5s;
+}
+
+/* Add twinkling stars effect */
+body::before, body::after {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::before {
+  background: 
+    radial-gradient(1px 1px at 20% 30%, #fff 80%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 70% 80%, #fff 80%, transparent 100%),
+    radial-gradient(1px 1px at 50% 60%, #fff 80%, transparent 100%),
+    radial-gradient(2px 2px at 80% 20%, #fff 80%, transparent 100%),
+    radial-gradient(1px 1px at 90% 70%, #fff 80%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 30% 90%, #fff 80%, transparent 100%);
+  opacity: 0.7;
+}
+
+body::after {
+  background: 
+    radial-gradient(1px 1px at 10% 80%, #fff 80%, transparent 100%),
+    radial-gradient(2px 2px at 60% 10%, #fff 80%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 80% 60%, #fff 80%, transparent 100%),
+    radial-gradient(1px 1px at 40% 50%, #fff 80%, transparent 100%);
+  opacity: 0.5;
+  animation: twinkle 4s linear infinite alternate;
+}
+
+@keyframes twinkle {
+  0% { opacity: 0.5; }
+  100% { opacity: 0.8; }
 }
 
 /* Glassmorphism Container */
 .app-container {
   max-width: 600px;
   margin: 2rem auto;
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(30, 34, 60, 0.85);
   border-radius: 1.5rem;
-  box-shadow: 0 8px 32px rgba(60, 72, 88, 0.18);
+  box-shadow: 0 8px 32px rgba(60, 72, 120, 0.28), 0 0 40px 0 #3f37c933;
   padding: 2.5rem 2rem;
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(60, 72, 88, 0.08);
+  border: 1px solid rgba(60, 72, 120, 0.18);
   animation: fadeIn 0.8s;
+  color: #f8fafc;
 }
 
 @keyframes fadeIn {
@@ -80,8 +120,7 @@ button {
     background 0.2s, 
     transform 0.1s, 
     box-shadow 0.2s,
-    filter 0.2s,
-    color 0.2s;
+    filter 0.2s;
   letter-spacing: 0.02em;
   position: relative;
   overflow: hidden;
@@ -108,7 +147,6 @@ button:active::after {
 
 button:hover {
   background: linear-gradient(90deg, #4895ef 0%, #3f37c9 100%);
-  color: #ffe066; /* Changes text color on hover */
   transform: translateY(-2px) scale(1.04);
   box-shadow: 0 4px 18px rgba(60, 72, 88, 0.18);
   filter: brightness(1.08);
@@ -143,7 +181,7 @@ button.secondary:hover {
 .goal-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 2rem; /* Increased gap for more spacing */
+  gap: 1.2rem;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -152,8 +190,8 @@ button.secondary:hover {
 .goal-item {
   background: rgba(224, 231, 255, 0.85);
   border-radius: 1rem;
-  padding: 2rem; /* Increased padding for more space */
-  box-shadow: 0 2px 16px rgba(60, 72, 88, 0.10); /* Slightly larger shadow */
+  padding: 1.2rem;
+  box-shadow: 0 2px 12px rgba(60, 72, 88, 0.08);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -163,17 +201,18 @@ button.secondary:hover {
 
 .goal-item:hover {
   background: #c7d2fe;
-  box-shadow: 0 4px 24px rgba(60, 72, 88, 0.16);
+  box-shadow: 0 4px 18px rgba(60, 72, 88, 0.14);
 }
 
 /* Dynamic progress bar */
 .progress-bar {
   width: 100%;
-  height: 14px;
+  height: 20px;
   background: #dbeafe;
   border-radius: 7px;
   overflow: hidden;
-  margin-top: 0.7rem;
+  margin-top: 1.2rem;  /* Increased space above progress bar */
+  margin-bottom: 0.5rem; /* Space below progress bar before buttons */
   box-shadow: 0 1px 4px rgba(60, 72, 88, 0.06);
 }
 
@@ -204,4 +243,10 @@ button:active {
   h1 {
     font-size: 1.7rem;
   }
+}
+
+.goal-actions {
+  display: flex;
+  gap: 1rem;           /* Space between buttons */
+  margin-top: 1.2rem;  /* Space above the button group */
 }
